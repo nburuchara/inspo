@@ -13,6 +13,21 @@
   }
 }
 
+@font-face {
+  font-family: 'inspoMain';
+  src: local('inspoMain'), url(./fonts/inspoMain.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'inspoSub';
+  src: local('inspoSub'), url(./fonts/inspoSub.otf) format('opentype');
+}
+
+@font-face {
+  font-family: 'inspoSub2';
+  src: local('inspoSub2'), url(./fonts/inspoSub2.ttf) format('truetype');
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
