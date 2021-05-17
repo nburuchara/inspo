@@ -157,6 +157,15 @@ const Styles = styled.div `
     margin-bottom: 70px;
 }
 
+.communityHeader video {
+    // height: 1000px;
+    // width: 300px;
+}
+
+.demoVid {
+    width: 23%;
+}
+
 .commHeadCol {
     margin-bottom: 55px;
 }
@@ -416,11 +425,11 @@ and (max-device-width: 480px) {
     }
     
     .header img {
-        width: 200px;
+        width: 400px;
     }
     
     .header h1 {
-        font-size: 105px;
+        font-size: 135px;
         font-family: inspoMain;
     }
     
@@ -643,6 +652,11 @@ and (max-device-width: 480px) {
         font-size: 55px;
     }
 
+    .demoVid {
+        width: 45%;
+        margin-bottom: 30px;
+    }
+
     .commHeadCol {
         margin-bottom: 185px;
     }
@@ -715,6 +729,8 @@ and (max-device-width: 480px) {
         margin-top: 15px;
         font-family: Quicksand;
         color: #FF8447;
+        margin-left: 20px;
+        margin-right: 20px
     }
 
     .unsureBtn {
@@ -738,10 +754,10 @@ export default class LandingPg extends Component {
     constructor() {
         super()
         this.state = {
-            frontpage: false,
+            frontpage: true,
             signupName: false,
             signUpProfile: false,
-            signUpSpeaker: true,
+            signUpSpeaker: false,
             signUpVerify: false,
             signUpTopics: false,
             loadingScreen: false,
@@ -907,7 +923,6 @@ export default class LandingPg extends Component {
             offsetSpeakerBg: "white",
             offsetSpeakerTxt: "#FF8447"
         })
-        
     }
 
     offsetSpeaker = () => {
@@ -1131,6 +1146,9 @@ export default class LandingPg extends Component {
                     </div>
                     <div className="communityHeader">
                         <h5>we've got loads of career advice!</h5>
+                        {/* <video className="demoVid" controls autoplay src="/assets/mobileVideo4.mp4">    
+                        </video> */}
+                        <img className="demoVid" src="assets/gifVideo.gif"/>
                         <h2>Getting Started</h2>
                         <div className="commHeadCol2">
                             <div className="commHeadRow">
@@ -1153,12 +1171,20 @@ export default class LandingPg extends Component {
                                 <img src="assets/commHeadBg4.png"/>
                             </div>
                             <div className="commHeadRow2">
-                                <img src="assets/commHeadTxt3.1.png"/>
+                                <img src="assets/commHeadTxt3.png"/>
                             </div>
                         </div>
                         {/* <img src="assets/wfh.png"/> */}
                         <h2>Our Community</h2>
                     </div>
+                    <div className="demo">
+                        <div className="demoRowPic">
+                            <img src="assets/demoPic30.25.gif"/>
+                        </div>
+                        <div className="demoRowCap">
+                            <img src="assets/demoCap30.15.gif"/>
+                        </div>
+                    </div> 
                     <div className="demo">
                         <div className="demoRowPic">
                             <img src="assets/demoPic21.255.gif"/>
@@ -1189,14 +1215,6 @@ export default class LandingPg extends Component {
                         </div>
                         <div className="demoRowCap">
                             <img src="assets/demoCap18.15.gif"/>
-                        </div>
-                    </div> 
-                    <div className="demo">
-                        <div className="demoRowPic">
-                            <img src="assets/demoPic17.25.gif"/>
-                        </div>
-                        <div className="demoRowCap">
-                            <img src="assets/demoCap17.55.gif"/>
                         </div>
                     </div> 
                     <div className="demo">
@@ -1447,7 +1465,8 @@ export default class LandingPg extends Component {
                 {this.state.showVerifyPage &&
                     <div className="signupComplete">
                         <h1>Thanks for signing up!</h1>
-                        <h5>You'll receive an email with a code to verify your account shortly!</h5>
+                        <h5>Our community is beginning to grow a little faster than we expected, so we are registering people in intervals.</h5>
+                        <h5>Expect an email from "Norman Buruchara" with your verificaiton code (to finish your registration) in the next few days!</h5>
                         <button
                         onClick={this.exitSignup}
                         ><b>Back to Home</b></button>

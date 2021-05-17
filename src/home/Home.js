@@ -6,6 +6,8 @@ import OtherUser from '../other_user/OtherUser'
 import SelectSearch from 'react-select-search';
 import {Nav, Navbar, NavbarBrand} from 'react-bootstrap'
 import detectZoom from 'detect-zoom';
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import Dropdown from 'react-bootstrap/Dropdown'
 
 
 
@@ -71,6 +73,16 @@ const Styles = styled.div `
     text-align: left;
 }
 
+.mainRow2 {
+    float: left;
+    width: 33%;
+    text-align: right;
+}
+
+.mainRow2 button {
+    width: 200px !important;
+}
+
     // - - MAIN FEED - - //
 
 
@@ -82,9 +94,18 @@ const Styles = styled.div `
     font-family: Quicksand;
 }
 
+.profileCol {
+    background-color: #F4F4F4;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
 .profileCol h1 {
     font-family: Concert One;
-    font-size: 27.5px;
+    font-size: 22.5px;
 }
 
 .profileCol h5 {
@@ -94,7 +115,7 @@ const Styles = styled.div `
 }
 
 .profileCol h6 {
-    font-family: Quicksand;
+    font-family: Varela Round;
     // margin-bottom: 15%;
 }
 
@@ -116,7 +137,6 @@ const Styles = styled.div `
 }
 
 .profileCol button {
-    margin-bottom: 15%;
     height: 45px;
     border: 2px solid #FF8447;
     background-color: #FF8447;
@@ -125,6 +145,16 @@ const Styles = styled.div `
     border-radius: 8px;
     margin-right: 25px;
     width: 160px;
+}
+
+.titleDiv {
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid black;
+}
+
+.captionDiv {
+    margin-bottom: 30px !important;
+    border-bottom: 0.5px solid black;
 }
 
 .userInfo div{
@@ -152,6 +182,10 @@ const Styles = styled.div `
 .latestVid {
     width: 640px;
     hegiht: 480px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 0.5px solid black;
+    // border-bottom: 0.5px solid black;
 }
 
     // - - EMPTY FEED - - //
@@ -218,6 +252,7 @@ const Styles = styled.div `
 
 .userCell img {
     width: 100px;
+    height: 95px;
     border-radius: 10px;
     text-align: right;
     border: 3px solid transparent;
@@ -227,10 +262,11 @@ const Styles = styled.div `
     // margin-left: 30px;
     object-fit: cover;
     margin: auto;
-    margin-bottom: 25px;
+    margin-bottom: 62px;
 }
 
 .userCell label {
+    margin-top: 20px;
     font-family: Quicksand;
 }
 
@@ -240,10 +276,19 @@ const Styles = styled.div `
 
 .searchUserInfo {
     font-family: Quicksand;
-    font-size: 15px;
+    font-size: 15px;f
 }
 
-
+.searchUserInfo span {
+    font-size: 12.5px;
+    background-color: #FF8447;
+    color: white;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    padding-left: 7.5px;
+    padding-right: 7.5px;
+    border-radius: 8px;
+}
 
 @media screen and (orientation:landscape) 
 and (min-device-width: 319px) 
@@ -253,6 +298,7 @@ and (max-device-width: 480px) {
     .mainRow {
         width: 100%;
         margin-bottom: 10%;
+        margin-left: 0px;
     }
         // - - SEE PROFILE BUTTON - - //
 
@@ -293,11 +339,21 @@ and (max-device-width: 480px) {
     }
 
     .profileCol h6 {
-        font-family: Quicksand;
+        font-family: Varela Round;
         margin-left: 10px;
         margin-right: 10px;
         // margin-bottom: 20%;
         max-width: 640px;
+    }
+
+        // - - VIDEO DIMENSIONS - - //
+
+    .latestVid {
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-top: 0px solid black !important;
+        border-bottom: 0px solid black !important;
     }
 
         // - - USER CELL - - //
@@ -319,7 +375,7 @@ and (max-device-width: 480px) {
         // margin-left: 30px;
         object-fit: cover;
         margin: auto;
-        margin-bottom: 25px;
+        margin-bottom: 63px;
     }
 
         // - - EMPTY FEED - - //
@@ -350,6 +406,18 @@ and (max-device-width: 480px) {
 
     .latestVid {
         width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border-top: 0px solid black !important;
+        border-bottom: 0px solid black !important;
+    }
+
+    .profileCol {
+        margin-left: 10px;
+        margin-right: 10px;
+        background-color: ##F4F4F4;
+        border-radius: 10px;
+        margin-bottom: 20px;
     }
 
     .profileCol h5 {
@@ -362,7 +430,7 @@ and (max-device-width: 480px) {
     }
 
     .profileCol h6 {
-        font-family: Quicksand;
+        font-family: Varela Round;
         margin-left: 10px;
         margin-right: 10px;
         // margin-bottom: 20%;
@@ -383,6 +451,10 @@ and (max-device-width: 480px) {
 
     .profileCol textarea {
         margin-left: 10px;
+    }
+
+    .profileCol img {
+        height: 90px;
     }
 
     // - - EMPTY FEED - - //
@@ -463,7 +535,7 @@ and (max-device-width: 480px) {
         // margin-left: 30px;
         object-fit: cover;
         margin: auto;
-        margin-bottom: 25px;
+        margin-bottom: 62px;
     }
     
     .userCell label {
@@ -649,7 +721,7 @@ export default class Home extends Component {
                 .withConverter(profileConverter).get().then(querySnapshot => {
                     const data = querySnapshot.docs.map(doc => doc.data())
                     const tags = querySnapshot.docs.map(doc => doc.data().tags)
-                    console.log(data)
+                    console.log(tags)
                     this.setState({
                         searchDatabase: data,
                         allTags : tags
@@ -835,6 +907,7 @@ export default class Home extends Component {
 
     renderPosts = () => {
         if (!this.state.profiles.length == 0) {
+            this.state.profiles = this.state.profiles.sort(function() { return 0.5 - Math.random() });
             return this.state.profiles.map((profiles) => {
                 var { name, nationality, latestPost, profilePic,
                 education, career, topic1, topic2, topic3, 
@@ -859,8 +932,8 @@ export default class Home extends Component {
                         <h5>🗣 {topic1} | {topic2} | {topic3}</h5>
                         <video className="latestVid" controls autoplay src={latestPost}>    
                         </video>
-                        <h1>{latestTitle}</h1>
-                        <h6>{latestCaption}</h6>
+                        <div className="titleDiv"><h1>{latestTitle}</h1></div>
+                        <div className-="captionDiv"><h6>{latestCaption}</h6></div>
                         {this.state.commentBtn && 
                             <div className="seeProfileBtn">
                                 <button
@@ -1142,8 +1215,8 @@ export default class Home extends Component {
                                                         )} className="searchUserInfo">
                                                             <b>{user.name}</b><br/>
                                                             🚀 {user.career} <br/>
-                                                            {user.hasContent ? '🎬 New posts' : '⏳ Content coming soon'}
-                                                            {/* 🗣 {user.topic1} | {user.topic2} | {user.topic3} */}
+                                                            {user.hasContent ? '🎬 New posts' : '⏳ No posts yet'} <br/>
+                                                            <span><b>{user.tags}</b></span>
                                                         </div>
                                                     </label>
                                                 </div>
@@ -1163,7 +1236,12 @@ export default class Home extends Component {
                             </table>
                         </div>
                             <div className="mainRow">
-                                <span></span>
+                                {/* <DropdownButton id="dropdown-item-button" title="Directory">
+                                    <Dropdown.ItemText>Directoryt</Dropdown.ItemText>
+                                    <Dropdown.Item as="text">Action</Dropdown.Item>
+                                    <Dropdown.Item as="text">Another action</Dropdown.Item>
+                                    <Dropdown.Item as="text">Something else</Dropdown.Item>
+                                </DropdownButton> */}
                             </div>
                         </div>
                     </div>
