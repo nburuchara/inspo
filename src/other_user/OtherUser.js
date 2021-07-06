@@ -9,13 +9,14 @@ const Styles = styled.div `
 
     .profile {
         // margin-right: 27.5px;
+        color: #F5EDA8;
     }
 
     .profile img {
         margin-top: 5%;
         width: 175px;
         border-radius: 10px;
-        border: 3px solid #FF8447;
+        border: 3px solid #F5EDA8;
     }
 
     .profile h2 {
@@ -28,7 +29,7 @@ const Styles = styled.div `
     }
 
     .profile h5 {
-        font-family: Nunito;
+        font-family: Quicksand !important;
         font-size: 18px;
     }
 
@@ -51,8 +52,29 @@ const Styles = styled.div `
     }
 
 
-    .profileInfo {
+    .profileInfo1 {
         text-align: center;
+        border: 0px !important;
+        background-color: #08645B !important;
+        color: #F5EDA8 !important; 
+        margin-bottom: 25px;
+    }
+
+    .profileInfo1 button {
+        height: 45px;
+        border: 2px solid #F5EDA8;
+        background-color: #F5EDA8; 
+        color: #08645B;
+        font-family: Varela Round;
+        border-radius: 10px;
+        width: 160px; 
+        margin-top: 30px;
+    }
+
+    .profileInfo1 button:hover {
+        background-color: #08645B;
+        color: #F5EDA8; 
+        border: 2px solid #F5EDA8;
     }
 
         // - - MESSAGE BUTTON - - //
@@ -96,6 +118,8 @@ const Styles = styled.div `
         // - - MY VIDEOS - - //
 
     .myVideos {
+        border-top: 3px solid #FF8847;
+        background-color: #F5EDA8;
         margin-left: 0% !important;
     }
         
@@ -107,27 +131,39 @@ const Styles = styled.div `
 
     .oneVideo {
         margin-top: 1%;
+        background-color: #F5EDA8;
+        padding-top: 3%;
+        border-bottom: 0.5px solid #BC4700;
+        padding-bottom: 3%;
     }
 
     .oneVideo video {
+        background-color: black;
         width: 340px;
         height: 240px;
         border-radius: 8px;
-        border: 3px solid #D6C9C7;
+        border: 3px solid #BC4700;;
     }
 
     .oneVideo h5 {
-       font-family: Overpass;
-       color: #FF8447;
-       font-family: 25px;
+        text-align: center;
+        font-family: Varela Round !important;
+        color: #08645B;
+        font-family: 25px;
     }
 
     .oneVideo p {
-        ont-family: Quicksand;
-        color: #000;
+        width: 100%;
+        max-width: 100%; 
+        font-family: Quicksand;
+        color: #08645B;
         text-align: justify center;
-        margin-left: 10%;
-        margin-right: 10%;
+        // margin-left: 10%;
+        // margin-right: 10%;
+    }
+
+    .videoInfo1 {
+        border: 1px solid black;
     }
 
 
@@ -139,7 +175,7 @@ const Styles = styled.div `
 
         .profile button {
             height: 45px;
-            border: 2px solid #FF8447;
+            border: 2px solid #F5EDA8;
             background-color: white;
             color: black;
             font-family: Quicksand;
@@ -149,13 +185,35 @@ const Styles = styled.div `
             margin-top: 5%;
         }
 
+        .profile img {
+            margin-bottom: 4%;
+        }
+
         .profile h5 {
-            margin-left: 10%;
-            margin-right: 5%;
+            margin-left: 25px;
+            margin-right: 25px;
             text-align: justify;
             font-family: Nunito;
             font-size: 15px;
         }
+
+        .profileInfo1 button {
+            height: 45px;
+            border: 2px solid #F5EDA8;
+            background-color: #F5EDA8; 
+            color: #08645B;
+            font-family: Varela Round;
+            border-radius: 10px;
+            width: 160px; 
+            margin-top: 30px;
+        }
+    
+        .profileInfo1 button:hover {
+            background-color: #08645B;
+            color: #F5EDA8; 
+            border: 2px solid #F5EDA8;
+        }
+
 
             // - - MY VIDEOS - - //
 
@@ -168,6 +226,12 @@ const Styles = styled.div `
             font-size: 22.5px;
             margin-left: 0px;
             margin-right: 0px;
+        }
+
+            // - - SINGLE VIDEO - - //
+
+        .oneVideo {
+            padding-top: 5%;
         }
 
 
@@ -200,10 +264,10 @@ export default class OtherUser extends Component {
             profileInfo: [],
             clickedUser: "",
             notFollowing: "Follow",
-            notFollowingBg: "white",
-            notFollowingTxt: "black",
-            followingBg: "#FF8447",
-            folllowingTxt: "white",
+            notFollowingBg: "#08645B",
+            notFollowingTxt: "#F5EDA8",
+            followingBg: "#08645B",
+            folllowingTxt: "#F5EDA8",
             userVideos: [],
             showVideos : true,
             showMessage : false,
@@ -272,14 +336,14 @@ export default class OtherUser extends Component {
                     //* Set Following Button if user is following:
                     if (data.includes(this.props.username)) {
                         this.setState({
-                            notFollowingBg: "#FF8447",
-                            notFollowingTxt: "white",
+                            notFollowingBg: "#F5EDA8",
+                            notFollowingTxt: "#08645B",
                             notFollowing: "Following"
                         })
                     } else {
                         this.setState({
-                        notFollowingBg: "white",
-                        notFollowingTxt: "black",
+                        notFollowingBg: "#08645B",
+                        notFollowingTxt: "#F5EDA8",
                         notFollowing: "Follow"
                     })
                     }
@@ -329,15 +393,15 @@ export default class OtherUser extends Component {
     followBtnClicked = () => {
         console.log(this.state.userName)
             //* Change follow color button
-        if (this.state.notFollowingBg == "white") {
+        if (this.state.notFollowingBg == "#08645B") {
             fire.firestore().collection("allUsers")
             .doc(this.state.userEmail).collection("following")
             .add({
                 username: this.props.username,
             })
             this.setState({
-                notFollowingBg: "#FF8447",
-                notFollowingTxt: "white",
+                notFollowingBg: "#F5EDA8",
+                notFollowingTxt: "#08645B",
                 notFollowing: "Following"
             })
         } else {
@@ -350,8 +414,8 @@ export default class OtherUser extends Component {
                 })
             })
             this.setState({
-                notFollowingBg: "white",
-                notFollowingTxt: "black",
+                notFollowingBg: "#08645B",
+                notFollowingTxt: "#F5EDA8",
                 notFollowing: "Follow"
             })
         }
@@ -370,7 +434,7 @@ export default class OtherUser extends Component {
 
         let followBtn = {
             height: "45px",
-            border: "2px solid #FF8447",
+            border: "2px solid #F5EDA8",
             backgroundColor: this.state.notFollowingBg,
             color: this.state.notFollowingTxt,
             fontFamily: "Quicksand",
@@ -384,8 +448,10 @@ export default class OtherUser extends Component {
             return(
                 <div className="oneVideo col md-4">
                     <video controls autoplay src={video.video} type="video/mp4"/>
-                    <h5><b>{video.title}</b></h5>
-                    <p>{video.description}</p>
+                    <div className="videoInfo">
+                        <h5><b>{video.title}</b></h5>
+                        <p>{video.description}</p>
+                    </div>
                 </div>
             )
         })
@@ -405,10 +471,18 @@ export default class OtherUser extends Component {
                     <label>|   {this.props.nationalityTxt}</label>
                     <br/>
                     {/* <p>📍 Northfield, MN</p> */}
-                    <div className="profileInfo">
+                    <div className="profileInfo1">
                         <h5><b>🎓 {this.props.education}</b></h5>
                         <h5><b>🚀 {this.props.career}</b></h5>
                         <h5><b>🗣 {this.props.topic1} | {this.props.topic2} | {this.props.topic3}</b></h5>
+                        <button
+                        onClick={event => window.location.href="/resources"}
+                        >
+                            <b>Resources</b>
+                        </button>
+                    </div>
+                    <div className="endOfProfile">
+
                     </div>
                     {/* <div className="messageBtn">
                         <button

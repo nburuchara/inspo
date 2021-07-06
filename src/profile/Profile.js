@@ -3,22 +3,35 @@ import fire from 'firebase'
 import styled from 'styled-components'
 import NavbarTool from '../navbar/Navbar'
 import UploadPic from '../profile/UploadPic'
+import {Helmet} from 'react-helmet';
+import DateTimePicker from 'react-datetime-picker';
+
 
 const Styles = styled.div `
 
         // - - PROFILE - - //
+    
+    .profile {
+        color: #F5EDA8;
+    }
 
 
     .profile img {
         margin-top: 10%;
         width: 175px;
         border-radius: 10px;
-        border: 3px solid #FF8447;
+        border: 3px solid #F5EDA8;
     }
 
     .profile h2 {
         font-family: Quicksand;
-        margin-top: 3%;
+        margin-top: 1%;
+    }
+
+    .profile h3 {
+        margin-top: 25px;
+        font-family: Quicksand;
+        color: #FF8847;
     }
 
     .profile h6 {
@@ -30,20 +43,55 @@ const Styles = styled.div `
     }
 
     .profile button {
-        border: 2px solid #FF8447;
-        background-color: #FF8447;
+        border: 2px solid #F5EDA8;
+        background-color: #F5EDA8;
         color: white;
-        font-family: Quicksand;
+        font-family: Avro;
         width: 200px;
         border-radius: 8px;
         margin-top: 15px;
         margin-bottom: 25px;
     }
 
+    // .editBtn {
+    //     margin-bottom: 0px !important;
+    //     border: 2px solid #F5EDA8 !important;
+    //     background-color: #08645B !important;
+    //     color: #F5EDA8 !important;
+    // }
+
     .profile label {
         font-size: 18px;
         font-family: Quicksand;
         margin-bottom: 20px;
+    }
+
+    .profile table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .profileSection {
+        margin-bottom: 30px;
+    }
+    
+
+    .profileSection button {
+        height: 45px;
+        border: 2px solid #F5EDA8;
+        background-color: #F5EDA8; 
+        color: #08645B;
+        font-family: Varela Round;
+        border-radius: 10px;
+        width: 160px; 
+        margin-top: 30px;
+    }
+
+
+    .profileSection button:hover {
+        background-color: #08645B;
+        color: #F5EDA8; 
+        border: 2px solid #F5EDA8;
     }
 
     .country {
@@ -54,12 +102,117 @@ const Styles = styled.div `
         border: 3px solid transparent !important;
     }
 
-
-
-    .profileInfo {
-        text-align: center;
-        margin-
+    .profileInfo span {
+        background-color: #000;
     }
+
+        // - - LET'S CONNECT - - //
+
+    .letsConnect {
+        margin-top: 35px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-bottom: 0.5px solid #F5EDA8;
+    }
+
+    .linkedin {
+        margin-top: 10px !important;
+        width: 50px !important;
+        border: 0px solid transparent !important;
+        margin-bottom: 10px;
+    }
+
+    .connectBox {
+        text-align: center;
+    }
+
+    .connectBox text {
+        margin-left: 20px;
+        font-family: Arvo;
+    }
+
+    .officeHours h4 {
+        font-family: Arvo;
+        font-size: 17.5px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    // .privateLinkedin {
+    //     text-align: center;
+    //     width: 150px !important;
+    //     background-color: #08645B !important;
+    //     color: #F5EDA8 !important;
+    //     margin-top: 0px !important;
+    //     height: 30px !important;
+    //     margin-bottom: 0px !important;
+    // }
+
+        // - - EDIT PROFILE - - //
+
+    .editConnectMaster table {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .editConnectMaster text {
+        color: #F5EDA8;
+        font-family: Arvo;
+        margin-left: 20px;
+    }
+
+    .editConnectMaster h6 {
+        font-family: Arvo !important;
+        font-size: 14px !important;
+    }
+
+
+    .editConnect button {
+        border: 0px solid transparent;
+        width: 30.5px;
+        background-color: white;
+        color: black;
+        height: 39.5px;
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 5px !important;
+        margin-bottom: 5px;
+    }
+
+    .editConnect button:hover {
+        color: black;
+        border: 0 solid transparent;
+        background-color: #FF8847;
+    }
+
+    .officeStep1 {
+        text-align: center;
+        width: 150px !important;
+        background-color: #08645B !important;
+        color: #F5EDA8 !important;
+        margin-top: 20px !important;
+        height: 40px !important;
+        margin-bottom: 0px !important;
+    }
+
+    .editBtnOffice {
+        margin-top: 0px !important;
+    }
+
+    .editMsgDiv {
+        // margin-left: 25px;
+    }
+
+    .editText {
+        // margin-left: 0px !important;
+        // font-size: 14px !important;
+        // margin-left: 25px !important;
+    }
+
+    .notPublic {
+        color: #CACACA !important;
+    }
+
 
         // - - MY VIDEOS - - //
         
@@ -71,27 +224,32 @@ const Styles = styled.div `
 
     .oneVideo {
         margin-top: 1%;
+        background-color: #F5EDA8;
+        border-top: 3.5px solid #FF8847;
     }
 
     .oneVideo video {
         width: 340px;
         height: 240px;
         border-radius: 8px;
-        border: 3px solid #D6C9C7;
+        border: 3px solid #F5EDA8;
     }
 
     .oneVideo h5 {
-       font-family: Overpass !important;
-       color: #45464;
-       font-size: 25px;
+       font-family: Quicksand !important;
+       color: #08645B; 25px;
     }
 
     .oneVideo p {
         font-family: Quicksand;
-        color: #000;
+        color: #08645B;
         text-align: justify center;
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .profileVideo {
+        background-color: 
     }
 
         // - - CHANGE PROFILE PIC - - //
@@ -122,27 +280,62 @@ export default class Profile extends Component {
             myVideos: [],
             userEmail: "",
             username: "",
+            messageUpdate: "Disable incoming messages",
+            messageSetting: "Currently not receiving messages",
             picExists: false,
             tempPhotos: [],
             profilePage: true,
-            changePic: false
+            changePic: false,
+            editProfile: false,
+            checked: false,
+            connectWithMe: true,
+            connectEdit: false,
+            showLinkedin: true,
+            hideLinkedin: false,
+            showMessage: true,
+            hideMessage: false,
+            showOffice: false,
+            hideOffice: true,
+            showHours: true,
+            showTimeChoice: true,
+            showMeetingChoice: false,
+            officeHourDate: "",
+            pLinkedinBg: "#08645B",
+            pLinkedinTxt: "#F5EDA8",
+            privateLinkedinTxt: "Hide",
+            pMessageBg: "#08645B",
+            pMessageTxt: "#F5EDA8",
+            privateMessageTxt: "Close inbox",
+            officeHr1: "",
+            officeHr2: "",
+            officeHr3: "",
+            officeHr4: "",
+            officeHr5: "",
+            officeErrMsg: "Set a date and time"
         }
+        this.handleChange = this.handleChange.bind(this);
     }
-
-    
-    
     
     authListener = () => {
-    fire.auth().onAuthStateChanged((user) => {
-        if (user) {
-            this.setState({userEmail: user.email})
-        } else {
-            this.setState({user:null})
-        }
-    })
+        fire.auth().onAuthStateChanged((user) => {
+            if (user) {
+                this.setState({userEmail: user.email})
+            } else {
+                this.setState({user:null})
+            }
+        })
     }
 
     componentDidMount = () => {
+        if (this.state.checked) {
+            this.setState({
+                messageSetting: "Currently not receiving messages"
+            })
+        } else {
+            this.setState({
+                messageSetting: "Send me a Message"
+            })
+        }
         this.authListener()
         class MyVideos {
             constructor(id, description, title, video) {
@@ -278,6 +471,86 @@ export default class Profile extends Component {
         })
     }
 
+    handleChange = (checked) => {
+        this.setState({checked})
+        setTimeout(() => {
+            this.setState({connectWithMe: true, connectEdit: false})
+        }, 1000)
+    }
+
+    onOfficeHourChange = (officeHourDate) => {
+        this.setState({officeHourDate})
+    }
+
+    editConnect = () => {
+        this.setState({
+            connectWithMe: false,
+            connectEdit: true
+        })
+    }
+
+    backToConnectView = () => {
+        this.setState({
+            connectWithMe: true,
+            connectEdit: false,
+            showOffice: false,
+            hideOffice: true
+        })
+    }
+
+    removeLinkedin = () => {
+        if (this.state.pLinkedinTxt == "#F5EDA8") {
+            this.setState({
+                showLinkedin: false,
+                hideLinkedin: true,
+                pLinkedinBg: "#F5EDA8",
+                pLinkedinTxt: "#08645B",
+                privateLinkedinTxt: "Make Public"
+            })
+        } else {
+            this.setState({
+                showLinkedin: true,
+                hideLinkedin: false,
+                pLinkedinBg: "#08645B",
+                pLinkedinTxt: "#F5EDA8",
+                privateLinkedinTxt: "Make Private"
+            })
+        }
+    }
+
+
+    removeMessage = () => {
+        if (this.state.pMessageTxt == "#F5EDA8") {
+            this.setState({
+                showMessage: false,
+                hideMessage: true,
+                pMessageTxt: "#08645B",
+                pMessageBg: "#F5EDA8",
+                privateMessageTxt: "Open inbox"
+            })
+        } else {
+            this.setState({
+                showMessage: true,
+                hideMessage: false,
+                pMessageTxt: "#F5EDA8",
+                pMessageBg: "#08645B",
+                privateMessageTxt: "Close inbox"
+            })
+        }
+    }
+
+    completeOffice1 = () => {
+        if (this.state.officeHourDate) {
+            this.setState({
+                showTimeChoice: false,
+                showMeetingChoice: true
+            })
+        } else {
+            //* error msg
+        }
+    }
+
+
     renderProfile = () => {
         return this.state.profileInfo.map((profiles) => {
             var {name, nationality, nationalityTxt, profilePic,
@@ -289,28 +562,256 @@ export default class Profile extends Component {
                 this.state.tempPhotos.map(pic => {
                     profilePic = pic.profilePic
                 })
-            }  else {
+            }  
+    
+            const linkedinPrivate = {
+                color: this.state.pLinkedinTxt,
+                backgroundColor: this.state.pLinkedinBg,
+                height: "35px",
+                width: "150px",
+                marginTop: "0px",
+                marginBottom: "0px"
             }
-            return(
-                <div className="profile">
-                    <img onClick={this.changeProfilePic} src={profilePic}/>
-                    <h2>{name}</h2>
-                    <h6>@{username}</h6>
-                    <img className="country" src={nationality}/>
-                    <label>|   {nationalityTxt}</label>
-                    <br/>
-                    {/* <p>📍 Northfield, MN</p> */}
-                    <div className="profileInfo">
-                        <h5><b>🎓 {education}</b></h5>
-                        {/* <button>Edit</button> */}
-                        <h5><b>🚀 {career}</b></h5>
-                        {/* <button>Edit</button> */}
-                        <h5><b>🗣 {topic1} | {topic2} | {topic3}</b></h5>
-                        {/* <button>Edit</button> */}
+
+            const messagePrivate = {
+                color: this.state.pMessageTxt,
+                backgroundColor: this.state.pMessageBg,
+                height: "35px",
+                width: "150px",
+                marginTop: "0px",
+                marginBottom: "0px"
+            }
+
+            return (
+                <div>
+                    <div className="profile">
+                            <img onClick={this.changeProfilePic} src={profilePic}/> <br/>
+                            <button
+                            className="editBtn"
+                            ><b>Edit Profile</b></button>
+                            <h2><b>{name}</b></h2>
+                            <h6>@{username}</h6>
+                            <img className="country" src={nationality}/>
+                            <label>|   <b>{nationalityTxt}</b></label>
+                            <br/>
+                            {/* <p>📍 Northfield, MN</p> */}
+                            <div className="profileInfo">
+                                <h5><b>🎓 {education}</b></h5>
+                                {/* <button>Edit</button> */}
+                                <h5><b>🚀 {career}</b></h5>
+                                {/* <button>Edit</button> */}
+                                <h5><b>🗣 {topic1} | {topic2} | {topic3}</b></h5>
+                                {/* <button>Edit</button> */}
+                            </div>
                     </div>
-                    {/* <button
-                    ><b>Tell Us What Content You Want To See</b></button> */}
-                </div>
+                    {this.state.connectWithMe && 
+                        <div className="profile">
+                            <div className="letsConnect"></div>
+                            <h3><u><b>Let's Connect</b></u></h3>
+                                <table className="connectBox">
+                                    {this.state.showMessage && 
+                                        <tr> 
+                                            <td><img className="linkedin" src="assets/messageMe5.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text><b>Send me a Message</b></text>
+                                                </td></tr>
+                                            </td>
+                                        </tr>  
+                                    }
+                                    {this.state.hideMessage && 
+                                       <tr> 
+                                            <td><img className="linkedin" src="assets/messageHide.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text className="notPublic"><b>Temporarily closed</b></text>
+                                                </td></tr>
+                                            </td>
+                                        </tr>  
+                                    }
+                                     <tr> 
+                                            <td>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <button 
+                                                    style={messagePrivate}
+                                                    onClick={this.removeMessage}
+                                                    className="privateLinkedin"
+                                                    ><b>{this.state.privateMessageTxt}</b></button>
+                                                </td></tr>
+                                            </td>
+                                        </tr>
+                                    {this.state.showLinkedin && 
+                                        <tr> 
+                                            <td><img className="linkedin" src="assets/linkedin.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text><b>Find me on LinkedIn</b></text><br/>
+                                                </td></tr>
+                                            </td>
+                                        </tr>
+                                    }     
+                                    {this.state.hideLinkedin && 
+                                        <tr> 
+                                            <td><img className="linkedin" src="assets/linkedinHide.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text className="notPublic"><b>Not public</b></text><br/>
+                                                </td></tr>
+                                            </td>
+                                        </tr>
+                                    }     
+                                    <tr> 
+                                        <td>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <button
+                                                style={linkedinPrivate} 
+                                                onClick={this.removeLinkedin}
+                                                className="privateLinkedin"
+                                                ><b>{this.state.privateLinkedinTxt}</b></button>
+                                            </td></tr>
+                                        </td>
+                                    </tr>
+                                    {this.state.showOffice && 
+                                        <tr> 
+                                            <td><img className="linkedin" src="assets/myOfficeHours2.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text><b>Office Hours</b></text>
+                                                </td></tr>
+                                            </td>
+                                        </tr> 
+                                    }
+                                    {this.state.hideOffice && 
+                                        <tr> 
+                                            <td><img className="linkedin" src="assets/officeHide.png"/>
+                                            </td> 
+                                            <td>
+                                                <tr className="careerSearchTxt"> 
+                                                <td>
+                                                    <text><b>Office Hours</b></text>
+                                                </td></tr>
+                                            </td>
+                                        </tr> 
+                                    }       
+                                </table>
+                            <button
+                            className="editBtnOffice"
+                            onClick={this.editConnect}
+                            ><b>Add</b></button>
+                            {this.state.showHours && 
+                                <table className="officeHours">
+                                    <tr> 
+                                        <td><h4><b></b></h4>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <h4><b>{this.state.officeHr1}</b></h4>
+                                            </td></tr>
+                                        </td>
+                                    </tr>  
+                                    <tr> 
+                                        <td><h4><b></b></h4>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <h4><b>{this.state.officeHr2}</b></h4>
+                                            </td></tr>
+                                        </td>
+                                    </tr>    
+                                    <tr> 
+                                        <td><h4><b></b></h4>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <h4><b>{this.state.officeHr3}</b></h4>
+                                            </td></tr>
+                                        </td>
+                                    </tr>  
+                                    <tr> 
+                                        <td><h4><b></b></h4>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <h4><b>{this.state.officeHr4}</b></h4>
+                                            </td></tr>
+                                        </td>
+                                    </tr>  
+                                    <tr> 
+                                        <td><h4><b></b></h4>
+                                        </td> 
+                                        <td>
+                                            <tr className="careerSearchTxt"> 
+                                            <td>
+                                                <h4><b>{this.state.officeHr5}</b></h4>
+                                            </td></tr>
+                                        </td>
+                                    </tr>      
+                                </table>
+                            }
+                                
+                        </div>
+                    }
+                    {this.state.connectEdit && 
+                        <div className="editConnectMaster">
+                            <button
+                            onClick={this.backToConnectView}
+                            ><b>Back</b></button>
+                            <table>
+                                <tr> 
+                                    <td><img className="linkedin" src="assets/myOfficeHours2.png"/>
+                                    </td> 
+                                    <td>
+                                        <tr className="careerSearchTxt"> 
+                                        <th>
+                                            <text><b>Office Hours</b></text>
+                                        </th></tr>
+                                    </td>
+                                </tr>    
+                            </table>
+                            {this.state.showTimeChoice && 
+                                <div className="editConnect">
+                                    <p>Set a date and time </p>
+                                    <DateTimePicker
+                                        onChange={this.onOfficeHourChange}
+                                        value={this.state.officeHourDate}
+                                    />
+                                </div>
+                            }
+                            {this.state.showMeetingChoice && 
+                                <div>
+                                    <button
+                                    >Zoom</button> <br/>
+                                    <button
+                                    >Google Meets</button>
+                                </div>
+                            }
+                            <button
+                            onClick={this.completeOffice1}
+                            className="officeStep1">Next</button>
+                            <h6>{this.state.officeErrMsg}</h6>
+                        </div>
+                    }
+                </div>  
             )
         })
     }
@@ -335,16 +836,29 @@ export default class Profile extends Component {
         })
         return(
             <Styles>
+                <Helmet>
+                    <style>{'body { background-color: #08645B; }'}</style>
+                </Helmet>
                 <NavbarTool/>
                 {this.state.profilePage && 
                  <div>
-                      <div>
+                      <div className="profileSection">
                           {this.renderProfile()}
+                            {/* <button
+                            onClick={event => window.location.href="/resources"}
+                            >
+                              <b>Resources</b>
+                            </button> */}
                       </div>
                       <div className="myVideos row">
                           {videos}
                       </div>
                   </div>
+                }
+                {this.state.editProfile &&
+                    <div className="editProfile">
+                        
+                    </div>
                 }
                 {this.state.changePic && 
                     <div className="profilePic">

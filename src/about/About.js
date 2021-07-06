@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import fire from '../database/firebase'
 import styled from 'styled-components'
 import NavbarLanding from '../navbar/LandingNavbar'
+import {Helmet} from 'react-helmet';
+
 
 
 const Styles = styled.div `
@@ -12,20 +14,21 @@ const Styles = styled.div `
     text-align: center;
     margin-top: 1%;
     margin-bottom: 3%;
-    background-image: url("/assets/newBlobCover.png");
+    // background-image: url("/assets/newBlobCover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .header h1 {
-    font-family: inspoMain;
-    font-size: 55px;
+    font-family: Quicksand;
+    font-size: 27.5px;
     margin-top: 3%;
+    color: #F5EDA8;
 }
 
 .header h3 {
-    color: #FF8447;
+    color: #F5EDA8 !important;
     font-family: Quicksand;
     font-size: 30px;
     text-align: justify center;
@@ -56,7 +59,7 @@ const Styles = styled.div `
 
 .foundingRow h5 {
     font-family: Quicksand;
-    color: #000;
+    color: #F5EDA8;;
     font-size: 25px;
     margin-top: 10px;
 }
@@ -69,7 +72,7 @@ const Styles = styled.div `
     text-align: center;
     margin-top: 1%;
     margin-bottom: 3%;
-    background-image: url("/assets/newBlobCover.png");
+    //background-image: url("/assets/newBlobCover.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -114,10 +117,13 @@ export default class About extends Component {
         return(
             <Styles>
                 <NavbarLanding/>
+                <Helmet>
+                    <style>{'body { background-color: #08645B; }'}</style>
+                </Helmet>
                 <div className="header">
-                    <h1>What is inspo?</h1>
+                    <h1><u>What is inspo?</u></h1>
                     <h3>inspo is an online platform where students and young professionals can share their academic and professional experiences to inform and inspire younger individuals still figuring out their paths.</h3>
-                    <h1>Founding Story</h1>
+                    <h1><u>Founding Story</u></h1>
                     <div className="foundingCol">
                         <div className="foundingRow">
                             <h5>1/7</h5>
@@ -153,6 +159,7 @@ export default class About extends Component {
                         </div>  
                     </div>
                 </div>
+                
             </Styles>
         )
     }

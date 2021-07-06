@@ -30,10 +30,11 @@ const Styles = styled.div `
 
 .navContainer figcaption {
     font-family: Quicksand;
+    color:#F5EDA8; 
 }
 
 .navContainer figcaption:hover {
-    color: #FF8447;
+    color: #ff8447;
 }
 
     // - - THE WHOLE NAVBAR - - //
@@ -64,6 +65,16 @@ const Styles = styled.div `
 .messageBtn img {
     // margin-right: 10px;
 }
+
+    // - - NOTIFICATION BALL - - //
+
+.notificationBell img {
+    width: 35px;
+    margin-right: 5.5%;
+    background-color: #F5EDA8;
+    border-radius: 10px;
+}
+
 
 @media screen and (orientation:landscape) 
 and (min-device-width: 319px) 
@@ -132,6 +143,17 @@ and (max-device-width: 480px) {
     margin-right: 10px;
 }
 
+    // - - NOTIFICATION BALL - - //
+
+.notificationBell {
+    margin-bottom: 20px;
+}
+
+.notificationBell img {
+    width: 35px;
+    margin-right: 6.5%;
+}
+
 }
 
 `
@@ -187,14 +209,27 @@ export default class NavbarTool extends Component {
             <Styles>
                 <div className="theWholeNavbar">
                     <Navbar expand="lg">
-                        <Navbar.Brand id="brand"><img className="logoImg" src="assets/logo.png"/></Navbar.Brand>
+                        <Navbar.Brand href="/" id="brand"><img className="logoImg" src="assets/logo3.png"/></Navbar.Brand>
                         <Navbar.Toggle id="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="navContainer ml-auto">
+                                <Nav.Item><Nav.Link>
+                                    <figure>
+                                        <img 
+                                        onClick={event => window.location.href="/notifications"}
+                                        src="/assets/newNotification.png"/>
+                                        <figcaption
+                                        onClick={event => window.location.href="/messages"}
+                                        ><b> 2 message(s) </b></figcaption>
+                                        <figcaption
+                                        onClick={event => window.location.href="/notifications"}
+                                        ><b> 5 notification(s) </b></figcaption>
+                                    </figure> 
+                                </Nav.Link></Nav.Item>
                                 <Nav.Item><Nav.Link href="/">
                                     <figure>
-                                        <img src="/assets/inspoIcon.png"/>
-                                        <figcaption><b>feed</b></figcaption>
+                                        <img src="/assets/newHomeIcon.png"/>
+                                        <figcaption><b>home</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>
                                 {/* <Nav.Item><Nav.Link href="/upload">
@@ -205,19 +240,24 @@ export default class NavbarTool extends Component {
                                 </Nav.Link></Nav.Item> */}
                                 <Nav.Item><Nav.Link href="/profile">
                                     <figure>
-                                        <img src="/assets/profileIcon.png"/>
+                                        <img src="/assets/profile2.png"/>
                                         <figcaption><b>profile</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>
                                 <Nav.Item><Nav.Link href="/" onClick={() => this.logout()}>
                                     <figure>
-                                        <img src="/assets/logoutIcon.png"/>
+                                        <img src="/assets/logout2.png"/>
                                         <figcaption><b>logout</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>
                             </Nav>
                         </Navbar.Collapse>
                     </Navbar>
+                    <div className="notificationBell">
+                        <img 
+                        onClick={event => window.location.href="/notifications"}
+                        src="assets/navbarNotification.png"/>
+                    </div>
                     {/* <button 
                     style={msgBtnStyle} 
                     className="messageBtn"

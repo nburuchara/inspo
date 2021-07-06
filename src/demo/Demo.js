@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import fire from '../database/firebase'
 import styled from 'styled-components'
 import LandingNavbar from '../navbar/LandingNavbar'
+import {Helmet} from 'react-helmet';
 
 
 const Styles = styled.div `
@@ -19,13 +20,15 @@ const Styles = styled.div `
 }
 
 .header h1 {
-    font-family: inspoMain;
-    font-size: 55px;
+    font-family: Quicksand;
+    font-size: 45px;
     margin-top: 3%;
+    color: #F5EDA8;
+    margin-bottom: 20px;
 }
 
 .header h5 {
-    color: #FF8447;
+    color: #F5EDA8;
     font-size: 30px;
     font-family: Quicksand;
 }
@@ -59,12 +62,15 @@ export default class Demo extends Component {
     render () {
         return(
             <Styles>
+                <Helmet>
+                    <style>{'body { background-color: #08645B; }'}</style>
+                    </Helmet>
                 <LandingNavbar/>
                 <div className="header">
                     <h1>Demo</h1>
                     <h5>Still recording this - it will be up soon!</h5>
                     <img src="/assets/recording.gif"/>
-                </div>
+                </div> 
             </Styles>
         )
     }

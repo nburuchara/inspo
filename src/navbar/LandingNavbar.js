@@ -5,8 +5,13 @@ import {Nav, Navbar, NavbarBrand} from 'react-bootstrap'
 
 const Styles = styled.div `
 
+
+
 // - - LOGO IMAGE - - //
 
+.wholeNavbar img {
+    width: 50px;
+}
 
 .logoImg {
     width: 90px;
@@ -15,7 +20,7 @@ const Styles = styled.div `
 #brand {
     font-family: inspoMain;
     font-size: 50px;
-    color: #FF8447;
+    color: #F5EDA8;
 }
 
 // - - NAVBAR STYLE - - //
@@ -31,7 +36,7 @@ const Styles = styled.div `
 }
 
 .navContainer figcaption:hover {
-    color: #FF8447;
+    color: #F5EDA8;
 }
 
     // - - NAVBAR LINK - - //
@@ -48,7 +53,7 @@ const Styles = styled.div `
 }
 
 .navLink:hover {
-    background-color: #FF8447;
+    background-color: #F5EDA8;;
     color: #fff;
 }
 
@@ -68,9 +73,9 @@ export default class LandingNavbar extends Component {
     render () {
         return(
             <Styles>
-                <div>
+                <div className="wholeNavbar">
                     <Navbar expand="lg">
-                        <Navbar.Brand href="/" id="brand">inspo</Navbar.Brand>
+                        <Navbar.Brand href="/" id="brand"><img src="assets/logo3.png"/></Navbar.Brand>
                         <Navbar.Toggle id="responsive-navbar-nav"/>
                         <Navbar.Collapse id="responsive-navbar-nav">
                             <Nav className="container-fluid navContainer ml-auto">

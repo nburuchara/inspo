@@ -14,6 +14,9 @@ import Login from './login/Login';
 import About from './about/About'
 import Message from './message/Message'
 import Demo from './demo/Demo'
+import Alert from './notifications/Alert'
+import Resource from './resources/Resource'
+
 
 const Styles = styled.div  `
 
@@ -60,6 +63,8 @@ class App extends Component {
                 <Route exact path = "/selected_user" render = {() => <OtherUser/>}/>
                 <Route exact path = "/upload" render = {() => <Upload/>}/>
                 <Route exact path = "/messages" render = {() => <Message/>} />
+                <Route exact path = "/notifications" render = {() => <Alert/>}/>
+                <Route exact path="/resources" render = {() => <Resource/>}/>
               </Switch>
             </Router>
           </React.Fragment>
