@@ -17,10 +17,10 @@ const Styles = styled.div `
 
 
     .profile img {
-        margin-top: 10%;
-        width: 175px;
-        border-radius: 10px;
-        border: 3px solid #F5EDA8;
+        margin-top: 2%;
+        width: 200px;
+        border-radius: 7px;
+        border: 5px solid #FF8847;
     }
 
     .profile h2 {
@@ -72,7 +72,7 @@ const Styles = styled.div `
     }
 
     .profileSection {
-        margin-bottom: 30px;
+        margin-bottom: 0px;
     }
     
 
@@ -110,6 +110,14 @@ const Styles = styled.div `
 
     .letsConnect {
         margin-top: 35px;
+        margin-left: 20%;
+        margin-right: 20%;
+        border-bottom: 0.5px solid #F5EDA8;
+    }
+
+    .letsConnect2 {
+        margin-top: 15px;
+        margin-bottom: 50px;
         margin-left: 20%;
         margin-right: 20%;
         border-bottom: 0.5px solid #F5EDA8;
@@ -163,7 +171,8 @@ const Styles = styled.div `
 
     .editConnectMaster h6 {
         font-family: Arvo !important;
-        font-size: 14px !important;
+        font-size: 18px !important;
+        color: #F5EDA8;
     }
 
 
@@ -190,9 +199,19 @@ const Styles = styled.div `
         width: 150px !important;
         background-color: #08645B !important;
         color: #F5EDA8 !important;
-        margin-top: 20px !important;
+        margin-top: 27.5px !important;
         height: 40px !important;
-        margin-bottom: 0px !important;
+        margin-bottom: 20px !important;
+    }
+
+    .officeStepBack {
+        text-align: center;
+        width: 150px !important;
+        background-color: #08645B !important;
+        color: #F5EDA8 !important;
+        margin-top: 40px !important;
+        height: 40px !important;
+        margin-bottom: 20px !important;
     }
 
     .editBtnOffice {
@@ -213,6 +232,20 @@ const Styles = styled.div `
         color: #CACACA !important;
     }
 
+        // - - DURATION - - //
+
+    .duration p {
+        font-size: 13px !important;
+        color: #F5EDA8;
+        font-family: Arvo;
+    }
+
+        // - - MEETING LINK - - //
+
+    .meetingLink {
+
+    }
+
 
         // - - MY VIDEOS - - //
         
@@ -223,9 +256,9 @@ const Styles = styled.div `
         // - - SINGLE VIDEO - - //
 
     .oneVideo {
-        margin-top: 1%;
-        background-color: #F5EDA8;
-        border-top: 3.5px solid #FF8847;
+        // margin-top: 1%;
+        // background-color: #00;
+        // border-top: 3.5px solid #FF8847;
     }
 
     .oneVideo video {
@@ -237,12 +270,12 @@ const Styles = styled.div `
 
     .oneVideo h5 {
        font-family: Quicksand !important;
-       color: #08645B; 25px;
+       color: #F5EDA8 !important; 
     }
 
     .oneVideo p {
         font-family: Quicksand;
-        color: #08645B;
+        color: #F5EDA8;
         text-align: justify center;
         margin-left: 20px;
         margin-right: 20px;
@@ -299,6 +332,8 @@ export default class Profile extends Component {
             showHours: true,
             showTimeChoice: true,
             showMeetingChoice: false,
+            showNextOfficeBtn: true,
+            showMeetingDuration: false,
             officeHourDate: "",
             pLinkedinBg: "#08645B",
             pLinkedinTxt: "#F5EDA8",
@@ -311,7 +346,9 @@ export default class Profile extends Component {
             officeHr3: "",
             officeHr4: "",
             officeHr5: "",
-            officeErrMsg: "Set a date and time"
+            officeErrMsg: "Set a date and time",
+            meetingSelected: "",
+            durationSelected: ""
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -494,7 +531,8 @@ export default class Profile extends Component {
             connectWithMe: true,
             connectEdit: false,
             showOffice: false,
-            hideOffice: true
+            hideOffice: true,
+            // showNextOfficeBtn: true
         })
     }
 
@@ -543,13 +581,101 @@ export default class Profile extends Component {
         if (this.state.officeHourDate) {
             this.setState({
                 showTimeChoice: false,
-                showMeetingChoice: true
-            })
+                showMeetingDuration: true,
+                officeErrMsg: "Select a duration for your office hours",
+                showNextOfficeBtn: false
+            })   
         } else {
-            //* error msg
+            this.setState({
+                officeErrMsg: "Oops, something wasn't input correctly",
+            })
         }
     }
 
+    backToCompleteOffice1 = () => {
+        this.setState({
+            showMeetingDuration: false,
+            showTimeChoice: true,
+            officeErrMsg: "Select a time and date",
+            showNextOfficeBtn: true
+        })
+    }
+
+    backToCompleteOffice2 = () => {
+        this.setState({
+            showMeetingChoice: false,
+            showMeetingDuration: true,
+            officeErrMsg: "Select a duration for your office hours"
+        })
+    }
+
+    backToCompleteOffice3 = () => {
+        if (this.state.meetingSelected === "Zoom"){
+            this.setState({
+                showMeetingLink: false,
+                showMeetingChoice: true,
+                showZoomDetails: false
+            })
+        } else {
+            this.setState({
+                showMeetingLink: false,
+                showMeetingChoice: true
+            })
+        }
+    }
+
+    duration15 = () => {
+        this.setState({
+            durationSelected: "15 min",
+            showMeetingDuration: false,
+            showMeetingChoice: true,
+            officeErrMsg: "Select a platform to host your office hours"
+        })
+    }
+
+    duration20 = () => {
+        this.setState({
+            durationSelected: "20 min",
+            showMeetingDuration: false,
+            showMeetingChoice: true,
+            officeErrMsg: "Select a platform to host your office hours"
+        })
+    }
+
+    duration30 = () => {
+        this.setState({
+            durationSelected: "30 min",
+            showMeetingDuration: false,
+            showMeetingChoice: true,
+            officeErrMsg: "Select a platform to host your office hours"
+        })
+    }
+
+    duration60 = () => {
+        this.setState({
+            durationSelected: "60 min",
+            showMeetingDuration: false,
+            showMeetingChoice: true,
+            officeErrMsg: "Select a platform to host your office hours"
+        })
+    }
+
+    selectedMeets = () => {
+        this.setState({
+            showMeetingChoice: false,
+            showMeetingLink: true,
+            meetingSelected: "Google Meets"
+        })
+    }
+
+    selectedZoom = () => {
+        this.setState({
+            showMeetingChoice: false,
+            showMeetingLink: true,
+            showZoomDetails: true,
+            meetingSelected: "Zoom",
+        })
+    }
 
     renderProfile = () => {
         return this.state.profileInfo.map((profiles) => {
@@ -582,6 +708,7 @@ export default class Profile extends Component {
                 marginBottom: "0px"
             }
 
+
             return (
                 <div>
                     <div className="profile">
@@ -603,10 +730,10 @@ export default class Profile extends Component {
                                 <h5><b>🗣 {topic1} | {topic2} | {topic3}</b></h5>
                                 {/* <button>Edit</button> */}
                             </div>
+                            <div className="letsConnect"></div>
                     </div>
                     {this.state.connectWithMe && 
                         <div className="profile">
-                            <div className="letsConnect"></div>
                             <h3><u><b>Let's Connect</b></u></h3>
                                 <table className="connectBox">
                                     {this.state.showMessage && 
@@ -790,24 +917,72 @@ export default class Profile extends Component {
                             </table>
                             {this.state.showTimeChoice && 
                                 <div className="editConnect">
-                                    <p>Set a date and time </p>
                                     <DateTimePicker
                                         onChange={this.onOfficeHourChange}
                                         value={this.state.officeHourDate}
                                     />
                                 </div>
                             }
+                            {this.state.showMeetingDuration && 
+                                <div className="duration">
+                                    <p>** The duration of the meeting is actually entirely up to you, <br/> 
+                                        this just gives your attendees a rough idea of how long a meeting will be</p>
+                                    <button
+                                    onClick={this.duration15}
+                                    >15 min</button> <br/>
+                                    <button
+                                    onClick={this.duration20}
+                                    >20 min</button> <br/>
+                                    <button
+                                    onClick={this.duration30}
+                                    >30 min</button> <br/>
+                                    <button
+                                    onClick={this.duration60}
+                                    >Up to an hour</button> <br/>
+                                    <button
+                                    onClick={this.backToCompleteOffice1}
+                                    className="officeStepBack"
+                                    >Back</button>
+                                </div>
+                            }
                             {this.state.showMeetingChoice && 
                                 <div>
                                     <button
+                                    onClick={this.selectedZoom}
                                     >Zoom</button> <br/>
                                     <button
-                                    >Google Meets</button>
+                                    onClick={this.selectedMeets}
+                                    >Google Meets</button><br/>
+                                    <button
+                                    onClick={this.backToCompleteOffice2}
+                                    className="officeStepBack"
+                                    >Back</button>
                                 </div>
                             }
-                            <button
-                            onClick={this.completeOffice1}
-                            className="officeStep1">Next</button>
+                            {this.state.showNextOfficeBtn && 
+                                <button
+                                onClick={this.completeOffice1}
+                                className="officeStep1">Next</button>
+                            }
+                            {this.state.showMeetingLink && 
+                                <div className="meetingLink">
+                                    <h5>Paste your {this.state.meetingSelected} meeting here</h5>
+                                    <input/> <br/>
+                                    {this.state.showZoomDetails && 
+                                        <div>
+                                            <p>Enter meeting code</p>
+                                            <input/> <br/>
+                                            <p>Enter meeting password</p>
+                                            <input/> <br/>
+                                        </div>
+                                    }
+                                    <button
+                                    onClick={this.backToCompleteOffice3}
+                                    className="officeStepBack"
+                                    >Back</button>
+                                </div>
+                            }
+                             
                             <h6>{this.state.officeErrMsg}</h6>
                         </div>
                     }
@@ -850,6 +1025,7 @@ export default class Profile extends Component {
                               <b>Resources</b>
                             </button> */}
                       </div>
+                      <div className="letsConnect2"></div>
                       <div className="myVideos row">
                           {videos}
                       </div>

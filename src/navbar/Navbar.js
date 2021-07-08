@@ -217,7 +217,7 @@ export default class NavbarTool extends Component {
                                     <figure>
                                         <img 
                                         onClick={event => window.location.href="/notifications"}
-                                        src="/assets/newNotification.png"/>
+                                        src="/assets/notificationIcon2.png"/>
                                         <figcaption
                                         onClick={event => window.location.href="/messages"}
                                         ><b> 2 message(s) </b></figcaption>
@@ -228,7 +228,7 @@ export default class NavbarTool extends Component {
                                 </Nav.Link></Nav.Item>
                                 <Nav.Item><Nav.Link href="/">
                                     <figure>
-                                        <img src="/assets/newHomeIcon.png"/>
+                                        <img src="/assets/homeIcon2.png"/>
                                         <figcaption><b>home</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>
@@ -240,13 +240,13 @@ export default class NavbarTool extends Component {
                                 </Nav.Link></Nav.Item> */}
                                 <Nav.Item><Nav.Link href="/profile">
                                     <figure>
-                                        <img src="/assets/profile2.png"/>
+                                        <img src="/assets/profileIcon2.png"/>
                                         <figcaption><b>profile</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>
                                 <Nav.Item><Nav.Link href="/" onClick={() => this.logout()}>
                                     <figure>
-                                        <img src="/assets/logout2.png"/>
+                                        <img src="/assets/logoutIcon2.png"/>
                                         <figcaption><b>logout</b></figcaption>
                                     </figure> 
                                 </Nav.Link></Nav.Item>

@@ -2572,8 +2572,8 @@ export default class Home extends Component {
                                                     <td>
                                                         <tr className="careerSearchTxt"> 
                                                         <td>
-                                                            <text><b>Interview Me</b></text>
-                                                            <p>Request an interview with us</p>
+                                                            <text><b>Interview</b></text>
+                                                            <p>Request an interview with us or self-record your interview</p>
                                                         </td></tr>
                                                     </td>
                                                 </tr>         

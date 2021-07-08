@@ -764,8 +764,21 @@ and (max-device-width: 480px) {
     }
 
     .ourCareers {
-        margin-left: 5.5% !important;
+        margin-left: auto;
+        margin-right: auto;
+        width: 85% !important;
+    }
+
+    .titleHeaders {
+        margin-left: auto;
+        margin-right: auto;
+        // text-align: center;
+        // margin-left: 20% !important;
         width: 80% !important;
+    } 
+
+    .titleHeaders img {
+        width: 100% !important;
     }
 
     .ourCareers h2 {
@@ -1353,7 +1366,7 @@ export default class LandingPg extends Component {
                     </div> */}
                     <div className="header">
                         <img src="assets/coverInspo.png"/>
-                        <img src = "assets/inspoCover2.5.png"/>
+                        <img src = "assets/inspoCover2.png"/>
                         {/* <h1>inspo</h1> */}
                         {/* <h3>share, learn, inspire</h3> */}
                     </div>
@@ -1369,7 +1382,7 @@ export default class LandingPg extends Component {
                         <img src="assets/dot.png"/>
                     </div>
                     <div className="communityHeader">
-                        <div>
+                        <div className="titleHeaders">
                             <img src="assets/headerTrial.gif"/>
                         </div>
                         <div className="commHeadCol2">
@@ -1406,7 +1419,10 @@ export default class LandingPg extends Component {
                         <div className="endOfSection3">
                             <img src="assets/dot.png"/>
                         </div>
-                        <h2 lassName="ourCommunityHeader3">Getting Started</h2>
+                        <div className="titleHeaders">
+                            <img src="assets/headerTrial2.gif"/>
+                        </div>
+                        {/* <h2 lassName="ourCommunityHeader3">Getting Started</h2> */}
                         <div className="commHeadCol2">
                             <div className="commHeadRow">
                                 <img src="assets/commHeadBg2.png"/>
@@ -1434,8 +1450,11 @@ export default class LandingPg extends Component {
                         <div className="endOfSection2">
                             <img src="assets/dot.png"/>
                         </div>
+                        <div className="titleHeaders">
+                            <img src="assets/headerTrial3.gif"/>
+                        </div>
                         <div className="ourCareers">
-                            <h2 className="ourCommunityHeader">Careers & Degree Paths</h2>
+                            {/* <h2 className="ourCommunityHeader">Careers & Degree Paths</h2> */}
                             <img  src="assets/ourCareers.gif"/>
                         </div>
                         <div className="endOfSection2">
@@ -1445,7 +1464,10 @@ export default class LandingPg extends Component {
                             <img src="assets/dot.png"/>
                         </div> */}
                         {/* <img src="assets/wfh.png"/> */}
-                        <h2 className="ourCommunityHeader">Our Community</h2>
+                        {/* <h2 className="ourCommunityHeader">Our Community</h2> */}
+                        <div className="titleHeaders">
+                            <img src="assets/headerTrial4.gif"/>
+                        </div>
                     </div>
                     <div className="demo">
                         <div className="demoRowPic">
