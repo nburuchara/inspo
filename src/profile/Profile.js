@@ -117,10 +117,17 @@ const Styles = styled.div `
 
     .letsConnect2 {
         margin-top: 15px;
-        margin-bottom: 50px;
+        margin-bottom: 0px;
         margin-left: 20%;
         margin-right: 20%;
         border-bottom: 0.5px solid #F5EDA8;
+    }
+
+    .videosHeader {
+        color: #FF8847;
+        font-family: Quicksand;
+        margin-top: 20px;
+        margin-bottom: 50px;
     }
 
     .linkedin {
@@ -135,7 +142,7 @@ const Styles = styled.div `
     }
 
     .connectBox text {
-        margin-left: 20px;
+        // margin-left: 20px;
         font-family: Arvo;
     }
 
@@ -235,6 +242,8 @@ const Styles = styled.div `
         // - - DURATION - - //
 
     .duration p {
+        margin-left: 10%;
+        margin-right: 10%;
         font-size: 13px !important;
         color: #F5EDA8;
         font-family: Arvo;
@@ -242,8 +251,39 @@ const Styles = styled.div `
 
         // - - MEETING LINK - - //
 
-    .meetingLink {
+    .meetingLink text {
+        margin-left: 10%;
+        margin-right: 10%;
+        font-size: 13px !important;
+        color: #F5EDA8;
+        font-family: Arvo;
+        margin-bottom: 15px !important;
+    }
 
+    .meetingLink h5 {
+        margin-top: 15px;
+        color: #F5EDA8;
+        font-family: Arvo;
+        margin-bottom: 10px;
+    }
+
+    .meetingLink p {
+        margin-top: 20px;
+        color: #F5EDA8;
+        font-family: Arvo;
+    }
+
+    .meetingLink input {
+        height: 35.5px;
+        border-radius: 8px;
+        outline: none;
+        border: 2px solid transparent;
+        width: 287.5px;
+        padding: 5px;
+    }
+
+    .codeOrPassword {
+        text-align: center;
     }
 
 
@@ -334,6 +374,8 @@ export default class Profile extends Component {
             showMeetingChoice: false,
             showNextOfficeBtn: true,
             showMeetingDuration: false,
+            showMeetingLink: false,
+            showVerifyMeeting: false,
             officeHourDate: "",
             pLinkedinBg: "#08645B",
             pLinkedinTxt: "#F5EDA8",
@@ -348,9 +390,12 @@ export default class Profile extends Component {
             officeHr5: "",
             officeErrMsg: "Set a date and time",
             meetingSelected: "",
-            durationSelected: ""
+            durationSelected: "",
+            meetingLinkPlaceholder: "",
+            meetingLink: "",
+            zoomID: "",
+            zoomPassword: ""
         }
-        this.handleChange = this.handleChange.bind(this);
     }
     
     authListener = () => {
@@ -496,6 +541,12 @@ export default class Profile extends Component {
         })
     }
 
+    handleChange = (event) => {
+        this.setState({
+            [event.target.id] : event.target.value
+        })
+    }
+
     changeProfilePic = () => {
         this.state.profileInfo.map(detail => {
             if (detail.profilePic == "") {
@@ -506,13 +557,6 @@ export default class Profile extends Component {
             } else {
             }
         })
-    }
-
-    handleChange = (checked) => {
-        this.setState({checked})
-        setTimeout(() => {
-            this.setState({connectWithMe: true, connectEdit: false})
-        }, 1000)
     }
 
     onOfficeHourChange = (officeHourDate) => {
@@ -664,7 +708,8 @@ export default class Profile extends Component {
         this.setState({
             showMeetingChoice: false,
             showMeetingLink: true,
-            meetingSelected: "Google Meets"
+            meetingSelected: "Google Meets",
+            meetingLinkPlaceholder: "https://meet.google.com/abc-def-ghi"
         })
     }
 
@@ -674,8 +719,17 @@ export default class Profile extends Component {
             showMeetingLink: true,
             showZoomDetails: true,
             meetingSelected: "Zoom",
+            meetingLinkPlaceholder:"e.g. https://us04web.zoom.us/j/1234567890?pwd=abCdEfghIJKlmNOPqRSTUvwxY0zABc12"
         })
     }
+
+    verifyDetails = () => {
+        this.setState({
+            showMeetingLink: false,
+            showVerifyMeeting: true
+        })
+    }
+
 
     renderProfile = () => {
         return this.state.profileInfo.map((profiles) => {
@@ -902,7 +956,7 @@ export default class Profile extends Component {
                         <div className="editConnectMaster">
                             <button
                             onClick={this.backToConnectView}
-                            ><b>Back</b></button>
+                            ><b>Cancel</b></button>
                             <table>
                                 <tr> 
                                     <td><img className="linkedin" src="assets/myOfficeHours2.png"/>
@@ -966,23 +1020,43 @@ export default class Profile extends Component {
                             }
                             {this.state.showMeetingLink && 
                                 <div className="meetingLink">
-                                    <h5>Paste your {this.state.meetingSelected} meeting here</h5>
-                                    <input/> <br/>
+                                    <text>** Meeting details will only be made public to people that sign up for your office hours</text>
+                                    <h5>Paste your {this.state.meetingSelected} meeting link here</h5>
+                                    <input
+                                    // onChange={this.handleChange}
+                                    id="meetingLink"
+                                    value={this.state.meetingLink}
+                                    placeholder={this.state.meetingLinkPlaceholder}
+                                    /> <br/>
                                     {this.state.showZoomDetails && 
                                         <div>
-                                            <p>Enter meeting code</p>
-                                            <input/> <br/>
-                                            <p>Enter meeting password</p>
-                                            <input/> <br/>
+                                            <p>Or enter your meeting ID</p>
+                                            <input
+                                            // onChange={this.handleChange}
+                                            id="zoomID"
+                                            value={this.state.zoomID}
+                                            placeholder="e.g. 123 456 7890"
+                                            className="codeOrPassword"
+                                            /> <br/>
+                                            <p>Enter your meeting password (if applicable)</p>
+                                            <input
+                                            // onChange={this.handleChange}
+                                            id="zoomPassword"
+                                            value={this.state.zoomPassword}
+                                            placeholder="e.g. 123456"
+                                            className="codeOrPassword"
+                                            /> <br/>
                                         </div>
                                     }
+                                    <button
+                                    onClick={this.verifyDetails}
+                                    >Done</button> <br/>
                                     <button
                                     onClick={this.backToCompleteOffice3}
                                     className="officeStepBack"
                                     >Back</button>
                                 </div>
                             }
-                             
                             <h6>{this.state.officeErrMsg}</h6>
                         </div>
                     }
@@ -1026,6 +1100,7 @@ export default class Profile extends Component {
                             </button> */}
                       </div>
                       <div className="letsConnect2"></div>
+                      <h3 className="videosHeader"><u><b>Videos</b></u></h3>
                       <div className="myVideos row">
                           {videos}
                       </div>

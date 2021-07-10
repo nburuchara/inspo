@@ -221,9 +221,9 @@ export default class NavbarTool extends Component {
                                         <figcaption
                                         onClick={event => window.location.href="/messages"}
                                         ><b> 2 message(s) </b></figcaption>
-                                        <figcaption
+                                        {/* <figcaption
                                         onClick={event => window.location.href="/notifications"}
-                                        ><b> 5 notification(s) </b></figcaption>
+                                        ><b> 5 notification(s) </b></figcaption> */}
                                     </figure> 
                                 </Nav.Link></Nav.Item>
                                 <Nav.Item><Nav.Link href="/">

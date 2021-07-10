@@ -2733,6 +2733,7 @@ export default class Home extends Component {
                         name = {this.state.name}
                         profilePic = {this.state.profilePic}
                         email = {this.state.email}
+                        username = {this.state.username}
                         />
                     </div>
                 }
